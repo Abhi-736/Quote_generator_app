@@ -1,5 +1,4 @@
 import { createReducer } from "@reduxjs/toolkit";
-
 export const firstReducer = createReducer(
     { quotes: {} },
     {
@@ -20,5 +19,25 @@ export const bookmarkReducer = createReducer(
     {
         toBookmark: (state, action) => {
             state.bookmark.push(action.payload)//pushing the bookmaked quotes to the bookmark array
-        }
-    });
+           localStorage.setItem("Array", JSON.stringify(state.bookmark))
+        },
+         toremove:(state, action) => {
+            
+             
+            state.bookmark= JSON.parse(localStorage.getItem('Array')).filter((quote, index) => index !== action.payload);
+             localStorage.setItem("Array", JSON.stringify(state.bookmark));
+           
+         }
+    }
+    );
+export const storeTags =createReducer(
+        {tag:'random'},
+    { selectedTag:(state, action)=> {
+       state.tag=action.payload;
+    }});
+    export const loader =createReducer(
+        {isLoading:true},
+        {loadv:(state,action)=>{
+            state.isLoading=action.payload
+        }}
+    )

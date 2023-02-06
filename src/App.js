@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Bookmarks from "./components/Bookmarks";
 import "./styles/App.scss";
 import { ChakraProvider, theme } from '@chakra-ui/react';
+import Tag from "./components/Tag"
 const App = () => {
   return (<ChakraProvider theme={theme}>
      <Router>
@@ -13,6 +14,7 @@ const App = () => {
         <Route/>
         <Route path="/" element={<Home />} />
         <Route path="/bookmarks" element={<Bookmarks />} />
+        <Route path="/tags" element={<Tag />} />
       </Routes>
 
      {/*  <Footer /> */}
